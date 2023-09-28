@@ -16,16 +16,6 @@ export default class HybridCluster {
                 new blueprints.MetricsServerAddOn,
                 new blueprints.ClusterAutoScalerAddOn,
                 new blueprints.SecretsStoreAddOn(),
-                new blueprints.ArgoCDAddOn({
-                   bootstrapRepo: {
-                     repoUrl: GIT_URL,
-                        targetRevision: "main",
-                        path: 'deployment/envs/dev',
-                        credentialsSecretName: 'github-ssh-key',
-                        credentialsType: 'SSH'
-                    },
-                    adminPasswordSecretName: 'argocd-admin-secret'
-               })
             )
             .build(scope, "hybrid-cluster");
     }
